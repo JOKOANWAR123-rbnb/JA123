@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IP Address Viewer</title>
+</head>
+<body>
+  <h1>Selamat Datang!</h1>
+  <p>IP Address Anda adalah:</p>
+  <h2 id="ip-address">Loading...</h2>
+  <script>
+    // Menggunakan API ipify untuk mendapatkan IP address
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('ip-address').textContent = data.ip;
+      })
+      .catch(error => {
+        document.getElementById('ip-address').textContent = 'Gagal mendapatkan IP.';
+        console.error('Error:', error);
+      });
+  </script>
+</body>
+</html>
